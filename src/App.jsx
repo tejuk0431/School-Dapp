@@ -5,14 +5,22 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-
+  const registerStudent= async () => {
+    console.log("clickede Student")
+  }
+  const registerTeacher= async () => {
+    console.log("clickede Teacher")
+  }
+  const userLogin= async () => {
+    console.log("clickede Login")
+  }
   return (
     <>
-      <button>Login</button>
+      <button onClick={userLogin}>Login</button>
       <br />
-      <button>Register as Teacher</button>
+      <button onClick={registerTeacher}>Register as Teacher</button>
       <br />
-      <button>Register as Student</button>
+      <button onClick={registerStudent}>Register as Student</button>
     </>
   )
 }
