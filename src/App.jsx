@@ -5,7 +5,7 @@ import './App.css'
 import abi from './contractabi.json'
 import { BrowserProvider, Contract } from 'ethers'
 function App() {
-  const CONTRACT_ADDRESS="0x9051807EFD07f0dD3941d8B5C0F684f4A5E9753E"
+  const CONTRACT_ADDRESS="0x8Fc2B925ccfD2BC6Dc139577EF84E3995a58Fc93"
   const [count, setCount] = useState(0)
   const registerStudent= async () => {
     const provider=new BrowserProvider(window.ethereum);
@@ -26,8 +26,13 @@ function App() {
     const signer= await provider.getSigner();
     const contract= new Contract(CONTRACT_ADDRESS,abi,signer);
     const address=await signer.getAddress()
-    const role= await contract.roles[address];
-    alert("role=",role)
+    const role= await contract.getRole(address);
+    if (role == 1){
+      alert ("you are a teacher") 
+    }
+    if (role == 2){
+      alert ("you are a student")
+    }
   }
   return (
     <>
